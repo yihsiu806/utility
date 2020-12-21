@@ -23,8 +23,18 @@ main() {
 }
 
 install_softwares() {
-    softwares="git vim exuberant-ctags tmux screen htop silversearcher-ag build-essential linux-headers-$(uname -r) "
+    softwares="git vim exuberant-ctags tmux screen htop silversearcher-ag build-essential "
     softwares+="powerline fonts-powerline"
+
+    if ! $SUDO apt update; then
+	echo "Fail to update. Stop."
+    fi
+
+    if ! $SUDO apt upgrade; then
+	echo "Fail to upgrade. Stop."
+    fi
+
+    $SUDO apt install -y linux-headers-$(uname -r)
 
     if ! $SUDO apt install -y $softwares; then
         echo "Fail to install softwares. Stop."
