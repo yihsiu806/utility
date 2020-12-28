@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-# Author: Yihsiu
-# Reference: https://github.com/nodejs/help/wiki/Installation
-
 lts_url='https://nodejs.org/en/'
 download_url='https://nodejs.org/dist/'
 tarball='/tmp/nodejs-tarball'
 nodejs_path=/usr/local/lib/nodejs
+
+main() {
+    download_tar_file
+    install
+}
 
 getlts() {
     local lts=$(wget -qO- https://nodejs.org/en/ | sed -n 's/ *\([[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\.[[:digit:]]\{1,2\}\) LTS$/\1/p')
@@ -76,5 +78,4 @@ install() {
     echo "npx version for $(npx -v)"
 }
 
-download_tar_file
-install
+main

@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Author: Yihsiu
-# Reference:
-#    https://stackoverflow.com/questions/44106842/case-insensitive-regex-in-bash
-
 if [ -z $SHELL ]; then
     echo "Does not support your shell. Use bash instead."
     exit 1
