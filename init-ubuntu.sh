@@ -12,7 +12,8 @@ fi
 main() {
     install_softwares
     setup_git_config
-    targets="bashrc" # cdecd tmux.conf screenrc"
+    targets="bashrc tmux.conf screenrc "
+    #targets+="cdecd"
     backup_config_files "$targets vimrc" 
     setup_bashrc $targets
     setup_vim
