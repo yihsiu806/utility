@@ -69,7 +69,11 @@ install() {
     printf "\nExtract tarball......\n"
     $SUDO tar -xJf $tarball -C $nodejs_path
 
-    modify_bash_configuration_file
+    # modify_bash_configuration_file
+    $SUDO rm -f /usr/local/bin /usr/local/bin/npm /usr/local/bin/npx
+    $SUDO cp $nodejs_path/node-$version-$distro/bin/node /usr/local/bin
+    $SUDO ln -s $nodejs_path/node-$version-$distro/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+    $SUDO ln -s $nodejs_path/node-$version-$distro/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
     printf "\nFinish installing Node.js\n"
     echo "You now have:"
